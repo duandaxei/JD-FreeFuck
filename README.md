@@ -7,14 +7,13 @@ __如果您觉得这个项目不错的话可以在右上角给颗⭐吗？方便
 > `修复` 代表有错误已经修复完成需要执行更新命令\
 > 具体内容和命令请前往 [Wiki](https://github.com/SuperManito/JD-FreeFuck/wiki/) 查看通知
 
+- __2021/2/26 17:55 `更新`__
+ㅤ更新了 `manual-update` 一键更新脚本。
+- __2021/2/26 14:40 `修复`__
+ㅤ修复了 `Liunx` 版本定时重复的问题， `Docker` 版本还在加班排错中，可手动添加定时任务[点此查看](https://github.com/SuperManito/JD-FreeFuck/wiki/%E4%B8%B4%E6%97%B6%E6%B7%BB%E5%8A%A0%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1)，请持续关注此项目......
+
 - __2021/2/26 10:00 `通知`__
 ㅤ目前 `Docker` 版定时错误，正在紧急处理中，请持续关注此项目......
-
-- __2021/2/25 15:00 `通知`__
-ㅤ本项目已升级换代成全新的版本，全新的教程和Readme，如有遇到问题请立即反馈，谢谢......
-
-- __2021/2/25 14:30 `更新`__
-ㅤ更新了 `manual-update.sh` 一键更新脚本，增加了新的功能。
 
 - __2021/2/25 10:00 `修复`__
 ㅤ修复了一键生成互助码脚本的错误。
@@ -33,9 +32,9 @@ __如果您觉得这个项目不错的话可以在右上角给颗⭐吗？方便
 
 ***
 
-# 《JD薅羊毛》一键部署 For Linux
-- __用途：通过自动化脚本参与JD商城的各种活动从而白嫖京豆__
-- __适用平台：PC、VPS (虚拟专用服务器)、NAS、软路由等__
+# __《JD薅羊毛》一键部署 For Linux__
+- __用途：通过自动化脚本参与JD商城的各种活动从而获取京豆用于购物抵扣__
+- __适用平台：PC、VPS (虚拟专用服务器) 、NAS 、软路由__
 - __适用环境：Linux & Docker Server__
 
 __ㅤㅤ`Telegram` 通知频道：[ t.me/jd_freefuck ](https://t.me/jd_freefuck)__
@@ -193,7 +192,7 @@ __请ㅤㅤ认ㅤㅤ真ㅤㅤ阅ㅤㅤ读ㅤㅤ教ㅤㅤ程ㅤ，ㅤ90%ㅤㅤ的
     #1) 进入容器
     docker exec -it jd /bin/bash
     #2) 执行脚本
-    bash <(curl -sSL https://gitee.com/SuperManito/JD-FreeFuck/raw/main/docker/install-docker.sh)
+    bash <(curl -sSL https://raw.githubusercontent.com/SuperManito/JD-FreeFuck/main/docker/install-docker.sh)
     #3) 退出容器
     exit
 > _注意：此命令请逐一执行。_
