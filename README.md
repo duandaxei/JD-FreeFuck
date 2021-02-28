@@ -5,7 +5,7 @@ __如果您觉得这个项目不错的话可以在右上角给颗⭐吗？方便
 ## 通知与更新
 > `更新` 代表有新的内容增加\
 > `修复` 代表有错误已经修复完成需要执行更新命令\
-> `通知` 代表您有新的内容或信息需要了解
+> `通知` 代表有新的内容或信息需要您了解\
 > 具体内容和命令请前往 [Wiki](https://github.com/SuperManito/JD-FreeFuck/wiki/) 查看通知
 ㅤ
 - __2021/2/28 21:20 `更新`__
@@ -32,7 +32,7 @@ __如果您觉得这个项目不错的话可以在右上角给颗⭐吗？方便
 
 __ㅤㅤ`Telegram` 通知频道：[ t.me/jd_freefuck ](https://t.me/jd_freefuck)__
 
-__ㅤㅤ`码云Gitee` 同步更新此项目，建议收藏国内项目发布页[ 点击此处访问 ](https://gitee.com/SuperManito/JD-FreeFuck)__
+__ㅤㅤ`码云Gitee` 同步更新：[ 点击此处访问 ](https://gitee.com/SuperManito/JD-FreeFuck)__
 
 ## 特别声明：
 
