@@ -1,17 +1,17 @@
 #!/bin/env bash
 ## Author:SuperManito
-## Modified:2021-3-1
+## Modified:2021-3-2
 
 ## ======================================== 说 明 =========================================================
 ##                                                                                                        #
-## 项目名称：《京东薅羊毛》一键部署 For Linux                                                                #
-## 项目用途：通过参与京东商城的各种活动白嫖京豆                                                               #
-## 适用系统：仅支持 Debian 与 Redhat 发行版和及其衍生发行版                                                   #
-## 温馨提示：尽量使用最新的稳定版系统，并且安装语言使用简体中文，CentOS如果是最小化安装，请通过SSH方式进入到终端   #
-##                                                                                                        #
-## 本项目基于 Evine 前辈公布的源码，目前由本人维护并继续开发                                                   #
-## 本项目使用的活动脚本来自 lxk0301 大佬的 jd_scripts 项目                                                   #
-## 本人能力有限，这可能是最终版本，感谢 Evine 对此项目做出的贡献                                               #
+## 项目名称：《京东薅羊毛》一键部署 For Linux                                                              #
+## 项目用途：通过参与京东商城的各种活动白嫖京豆                                                            #
+## 适用系统：仅支持 Debian 与 Redhat 发行版和及其衍生发行版                                                #
+## 温馨提示：尽量使用最新的稳定版系统，并且安装语言使用简体中文                                             #
+##           如果您使用的是 CentOS 系统且最小化安装，请通过SSH的方式进入到终端                              #
+## 本项目基于 Evine 前辈公布的源码，目前由本人维护并继续开发                                                #
+## 本项目使用的活动脚本来自 lxk0301 大佬的 jd_scripts 项目                                                 #
+## 本人能力有限，这可能是最终版本，感谢 Evine 对此项目做出的贡献                                            #
 ##                                                                                                        #
 ## ========================================================================================================
 
@@ -30,7 +30,7 @@ Manual_Update_URL="https://raw.githubusercontent.com/SuperManito/JD-FreeFuck/mai
 KEY="-----BEGIN OPENSSH PRIVATE KEY-----\nb3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABFwAAAAdzc2gtcn\nNhAAAAAwEAAQAAAQEAvRQk2oQqLB01iVnJKrnI3tTfJyEHzc2ULVor4vBrKKWOum4dbTeT\ndNWL5aS+CJso7scJT3BRq5fYVZcz5ra0MLMdQyFL1DdwurmzkhPYbwcNrJrB8abEPJ8ltS\nMoa0X9ecmSepaQFedZOZ2YeT/6AAXY+cc6xcwyuRVQ2ZJ3YIMBrRuVkF6nYwLyBLFegzhu\nJJeU5o53kfpbTCirwK0h9ZsYwbNbXYbWuJHmtl5tEBf2Hz+5eCkigXRq8EhRZlSnXfhPr2\n32VCb1A/gav2/YEaMPSibuBCzqVMVruP5D625XkxMdBdLqLBGWt7bCas7/zH2bf+q3zac4\nLcIFhkC6XwAAA9BjE3IGYxNyBgAAAAdzc2gtcnNhAAABAQC9FCTahCosHTWJWckqucje1N\n8nIQfNzZQtWivi8GsopY66bh1tN5N01YvlpL4ImyjuxwlPcFGrl9hVlzPmtrQwsx1DIUvU\nN3C6ubOSE9hvBw2smsHxpsQ8nyW1IyhrRf15yZJ6lpAV51k5nZh5P/oABdj5xzrFzDK5FV\nDZkndggwGtG5WQXqdjAvIEsV6DOG4kl5TmjneR+ltMKKvArSH1mxjBs1tdhta4kea2Xm0Q\nF/YfP7l4KSKBdGrwSFFmVKdd+E+vbfZUJvUD+Bq/b9gRow9KJu4ELOpUxWu4/kPrbleTEx\n0F0uosEZa3tsJqzv/MfZt/6rfNpzgtwgWGQLpfAAAAAwEAAQAAAQEAnMKZt22CBWcGHuUI\nytqTNmPoy2kwLim2I0+yOQm43k88oUZwMT+1ilUOEoveXgY+DpGIH4twusI+wt+EUVDC3e\nlyZlixpLV+SeFyhrbbZ1nCtYrtJutroRMVUTNf7GhvucwsHGS9+tr+96y4YDZxkBlJBfVu\nvdUJbLfGe0xamvE114QaZdbmKmtkHaMQJOUC6EFJI4JmSNLJTxNAXKIi3TUrS7HnsO3Xfv\nhDHElzSEewIC1smwLahS6zi2uwP1ih4fGpJJbU6FF/jMvHf/yByHDtdcuacuTcU798qT0q\nAaYlgMd9zrLC1OHMgSDcoz9/NQTi2AXGAdo4N+mnxPTHcQAAAIB5XCz1vYVwJ8bKqBelf1\nw7OlN0QDM4AUdHdzTB/mVrpMmAnCKV20fyA441NzQZe/52fMASUgNT1dQbIWCtDU2v1cP6\ncG8uyhJOK+AaFeDJ6NIk//d7o73HNxR+gCCGacleuZSEU6075Or2HVGHWweRYF9hbmDzZb\nCLw6NsYaP2uAAAAIEA3t1BpGHHek4rXNjl6d2pI9Pyp/PCYM43344J+f6Ndg3kX+y03Mgu\n06o33etzyNuDTslyZzcYUQqPMBuycsEb+o5CZPtNh+1klAVE3aDeHZE5N5HrJW3fkD4EZw\nmOUWnRj1RT2TsLwixB21EHVm7fh8Kys1d2ULw54LVmtv4+O3cAAACBANkw7XZaZ/xObHC9\n1PlT6vyWg9qHAmnjixDhqmXnS5Iu8TaKXhbXZFg8gvLgduGxH/sGwSEB5D6sImyY+DW/OF\nbmIVC4hwDUbCsTMsmTTTgyESwmuQ++JCh6f2Ams1vDKbi+nOVyqRvCrAHtlpaqSfv8hkjK\npBBqa/rO5yyYmeJZAAAAFHJvb3RAbmFzLmV2aW5lLnByZXNzAQIDBAUG\n-----END OPENSSH PRIVATE KEY-----"
 ## ========================================================================================================
 
-## ======================================= 定 义 账 户 Cookie =======================================
+## ======================================= 定 义 账 户 Cookie ==============================================
 ## 京东账户
 COOKIE1='""'
 COOKIE2='""'
@@ -115,7 +115,7 @@ function EnvStructures() {
         apt remove -y nodejs npm >/dev/null 2>&1
         rm -rf /etc/apt/sources.list.d/nodesource.list
         ## 安装需要的软件包
-        apt install -y wget curl net-tools openssh-server git perl moreutils
+        apt install -y wget curl openssh-server git perl moreutils
         ## 安装Nodejs与NPM
         curl -sL https://deb.nodesource.com/setup_14.x | bash -
         sed -i '1,$d' /etc/apt/sources.list.d/nodesource.list
@@ -130,7 +130,7 @@ function EnvStructures() {
         yum remove -y nodejs npm >/dev/null 2>&1
         rm -rf /etc/yum.repos.d/nodesource-*.repo
         ## 安装需要的软件包
-        yum install -y wget curl net-tools openssh-server git perl moreutils
+        yum install -y wget curl openssh-server git perl moreutils
         ## 安装Nodejs与NPM
         curl -sL https://rpm.nodesource.com/setup_14.x | bash -
         sed -i "s#rpm.nodesource.com#mirrors.ustc.edu.cn/nodesource/rpm#" /etc/yum.repos.d/nodesource-*.repo
@@ -217,10 +217,10 @@ function PanelInstallation() {
     cd $BASE
     ## 赋权所有项目文件
     chmod 777 $BASE/*
-    ## 判定控制面板是否安装成功
-    netstat -anp | grep 5678 -wq
+    ## 判定控制面板是否安装成功q
+    curl -sSL 127.0.0.1:5678 | grep "京东羊毛脚本控制面板" -wq
     if [ $? -eq 0 ]; then
-        echo -e ''
+        sleep 3s
         echo -e ''
         echo -e "\033[32m +--------- 控 制 面 板 安 装 成 功 并 已 启 动 ---------+ \033[0m"
         echo -e "\033[32m |                                                       | \033[0m"
@@ -242,7 +242,7 @@ function PanelInstallation() {
     fi
     echo -e ''
     echo -e ''
-    sleep 3s
+    sleep 2s
 }
 
 ## 更改配置文件：
