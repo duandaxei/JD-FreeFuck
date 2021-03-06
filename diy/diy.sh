@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 ## Author:SuperManito
-## Modified:2021-3-5
-
-## 定义下载的脚本代理链接
-Proxy_URL=https://ghproxy.com/
+## Modified:2021-3-6
 
 ##############################  作  者  昵  称  （必填）  ##############################
 # 使用空格隔开
@@ -12,18 +9,18 @@ author_list="i-chenzhe JDMyself whyour"
 ## 添加更多作者昵称（必填）示例：author_list="i-chenzhe whyour testuser"  直接追加，不要新定义变量
 
 ##############################  作  者  脚  本  地  址  URL  （必填）  ##############################
-# 例如：https://raw.githubusercontent.com/whyour/hundun/master/quanx/jx_nc.js
+# 例如：https://raw.sevencdn.com/whyour/hundun/master/quanx/jx_nc.js
 # 1.从作者库中随意挑选一个脚本地址，每个作者的地址添加一个即可，无须重复添加
 # 2.将地址最后的 “脚本名称+后缀” 剪切到下一个变量里（my_scripts_list_xxx）
-scripts_base_url_1=https://raw.githubusercontent.com/i-chenzhe/qx/main/
-scripts_base_url_2=https://raw.githubusercontent.com/573462273/JDMyself/main/scripts/
-scripts_base_url_3=https://raw.githubusercontent.com/whyour/hundun/master/quanx/
+scripts_base_url_1=https://raw.sevencdn.com/i-chenzhe/qx/main/
+scripts_base_url_2=https://raw.sevencdn.com/573462273/JDMyself/main/scripts/
+scripts_base_url_3=https://raw.sevencdn.com/whyour/hundun/master/quanx/
 
-## 添加更多脚本地址URL示例：scripts_base_url_3=https://raw.githubusercontent.com/SuperManito/JD-FreeFuck/master/
+## 添加更多脚本地址URL示例：scripts_base_url_3=https://raw.sevencdn.com/SuperManito/JD-FreeFuck/main/
 
 ##############################  作  者  脚  本  名  称  （必填）  ##############################
 # 将相应作者的脚本填写到以下变量中
-my_scripts_list_1="jd_entertainment.js jd_jump-jump.js jd_shake.js jd_shakeBean.js jd_xmf.js"
+my_scripts_list_1="jd_entertainment.js jd_jump_jump.js jd_shake.js jd_shakeBean.js jd_xmf.js"
 my_scripts_list_2="jd_axc.js jd_xxl_gh.js"
 my_scripts_list_3="jx_factory_component.js"
 
@@ -54,7 +51,7 @@ for author in $author_list; do
     echo $url
     eval name=$js
     echo $name
-    wget -q --no-check-certificate $Proxy_URL$url -O scripts/$name.new
+    wget -q --no-check-certificate $url -O scripts/$name.new
 
     # 如果上一步下载没问题，才去掉后缀".new"，如果上一步下载有问题，就保留之前正常下载的版本
     # 随机添加个cron到crontab.list
@@ -79,25 +76,25 @@ for author in $author_list; do
 done
 
 ##########################  删  除  旧  的  失  效  活  动  ##########################
-## 删除旧版本失效的活动示例： rm -rf ${ScriptsDir}/jd_test.js >/dev/null 2>&1
-rm -rf ${ScriptsDir}/jd_asus_iqiyi.js
-rm -rf ${ScriptsDir}/jd_collectBlueCoin.js
+## 删除旧版本失效的活动示例： rm -rf ${ScriptsDir}/jd_test.js
+rm -rf ${ScriptsDir}/jd_jump-jump.js
+# rm -rf ${ScriptsDir}/jd_xmf.js
 rm -rf ${ScriptsDir}/format_share_jd_code.js
+
 
 ##############################  修  正  定  时  任  务  ##########################################
 ## 注意两边修改内容区别在于中间内容"jd"、"${ShellDir}/jd.sh"
 ## 修正定时任务示例：sed -i "s|bash jd jd_test|bash ${ShellDir}/jd.sh test|g" ${ListCron}
 ##                 sed -i "s|bash jd jd_ceshi|bash ${ShellDir}/jd.sh ceshi|g" ${ListCron}
 sed -i "s|bash jd jd_entertainment|bash ${ShellDir}/jd.sh jd_entertainment|g" ${ListCron}
-sed -i "s|bash jd jd_jump-jump|bash ${ShellDir}/jd.sh jd_jump-jump|g" ${ListCron}
+sed -i "s|bash jd jd_jump_jump|bash ${ShellDir}/jd.sh jd_jump_jump|g" ${ListCron}
 sed -i "s|bash jd jd_shake|bash ${ShellDir}/jd.sh jd_shake|g" ${ListCron}
 sed -i "s|bash jd jd_shakeBean|bash ${ShellDir}/jd.sh jd_shakeBean|g" ${ListCron}
 sed -i "s|bash jd jd_xmf|bash ${ShellDir}/jd.sh jd_xmf|g" ${ListCron}
 sed -i "s|bash jd jd_axc|bash ${ShellDir}/jd.sh jd_axc|g" ${ListCron}
 sed -i "s|bash jd jd_xxl_gh|bash ${ShellDir}/jd.sh jd_xxl_gh|g" ${ListCron}
 sed -i "s|bash jd jx_factory_component|bash ${ShellDir}/jd.sh jx_factory_component|g" ${ListCron}
-
-
+sed -i '/jd_jump-jump/d' ${ListCron}
 
 echo -e "diy脚本更新完成..."
 echo -e ''
