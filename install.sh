@@ -1,6 +1,6 @@
 #!/bin/env bash
 ## Author:SuperManito
-## Modified:2021-3-8
+## Modified:2021-3-9
 
 ## ======================================== 说 明 =========================================================
 ##                                                                                                        #
@@ -183,11 +183,9 @@ function ProjectDeployment() {
     ## 创建目录
     mkdir $BASE/config
     mkdir $BASE/log
-    ## 创建软链接
-    ln -sf $BASE/jd.sh /usr/local/bin/jd
-    ln -sf $BASE/git_pull.sh /usr/local/bin/git_pull
-    ln -sf $BASE/rm_log.sh /usr/local/bin/rm_log
-    ln -sf $BASE/export_sharecodes.sh /usr/local/bin/export_sharecodes
+    ## 定义全局变量
+    echo "export JD_DIR=$BASE" >>/etc/profile
+    source /etc/profile
     ## 根据安装目录配置定时任务
     sed -i "s#BASE#$BASE#g" $BASE/sample/computer.list.sample
     ## 创建项目配置文件与定时任务配置文件
@@ -205,18 +203,25 @@ function ProjectDeployment() {
     cd $BASE
     bash git_pull.sh
     bash git_pull.sh >/dev/null 2>&1
+    ## 创建软链接
+    ln -sf $BASE/jd.sh /usr/local/bin/jd
+    ln -sf $BASE/git_pull.sh /usr/local/bin/git_pull
+    ln -sf $BASE/rm_log.sh /usr/local/bin/rm_log
+    ln -sf $BASE/export_sharecodes.sh /usr/local/bin/export_sharecodes
+    ln -sf /opt/jd/run_all.sh /usr/local/bin/run_all
     ## 赋权所有项目文件
-    chmod 777 *
+    chmod 777 $BASE/*
+    chmod 777 /usr/local/bin/*
 }
 
 ## 更改配置文件：
 function SetConfig() {
-    sed -i "35c Cookie1=$COOKIE1" $BASE/config/config.sh
-    sed -i "36c Cookie2=$COOKIE2" $BASE/config/config.sh
-    sed -i "37c Cookie3=$COOKIE3" $BASE/config/config.sh
-    sed -i "38c Cookie4=$COOKIE4" $BASE/config/config.sh
-    sed -i "39c Cookie5=$COOKIE5" $BASE/config/config.sh
-    sed -i "40c Cookie6=$COOKIE6" $BASE/config/config.sh
+    sed -i "30c Cookie1=$COOKIE1" $BASE/config/config.sh
+    sed -i "31c Cookie2=$COOKIE2" $BASE/config/config.sh
+    sed -i "32c Cookie3=$COOKIE3" $BASE/config/config.sh
+    sed -i "33c Cookie4=$COOKIE4" $BASE/config/config.sh
+    sed -i "34c Cookie5=$COOKIE5" $BASE/config/config.sh
+    sed -i "35c Cookie6=$COOKIE6" $BASE/config/config.sh
 }
 
 ## 判定控制面板安装结果：
@@ -309,7 +314,7 @@ function PanelUseNotes() {
 ## 项目使用需知：
 function UseNotes() {
     echo -e ''
-    echo -e "\033[32m --------------------------- 一键部署成功，请执行 bash run-all.sh 命令开始您的薅羊毛行为 --------------------------- \033[0m"
+    echo -e "\033[32m --------------------------- 一键部署成功，请执行 bash run_all.sh 命令开始您的薅羊毛行为 --------------------------- \033[0m"
     echo -e ''
     echo -e "\033[32m +=================================================================================================================+ \033[0m"
     echo -e "\033[32m |                                                                                                                 | \033[0m"
@@ -321,17 +326,17 @@ function UseNotes() {
     echo -e "\033[32m |                                                                                                                 | \033[0m"
     echo -e "\033[32m |       2. 为了保证脚本的正常运行，请不要更改任何组件的位置以避免出现未知的错误                                   | \033[0m"
     echo -e "\033[32m |                                                                                                                 | \033[0m"
-    echo -e "\033[32m |       3. 手动执行 run-all.sh 脚本后无需守在电脑旁，会自动在最后运行挂机活动脚本                                 | \033[0m"
+    echo -e "\033[32m |       3. 手动执行 run_all.sh 脚本后无需守在电脑旁，会自动在最后运行挂机活动脚本                                 | \033[0m"
     echo -e "\033[32m |                                                                                                                 | \033[0m"
     if [ $SYSTEM = "Debian" ]; then
-        echo -e "\033[32m |       4. 执行 run-all 脚本期间如果卡住，可按回车键尝试或通过命令 Ctrl + Z 跳过继续执行剩余活动脚本              | \033[0m"
+        echo -e "\033[32m |       4. 执行 run_all 脚本期间如果卡住，可按回车键尝试或通过命令 Ctrl + Z 跳过继续执行剩余活动脚本              | \033[0m"
     elif [ $SYSTEM = "RedHat" ]; then
-        echo -e "\033[32m |       4. 执行 run-all 脚本期间如果卡住，可按回车键尝试或通过命令 Ctrl + C 跳过继续执行剩余活动脚本              | \033[0m"
+        echo -e "\033[32m |       4. 执行 run_all 脚本期间如果卡住，可按回车键尝试或通过命令 Ctrl + C 跳过继续执行剩余活动脚本              | \033[0m"
     fi
     echo -e "\033[32m |                                                                                                                 | \033[0m"
     echo -e "\033[32m |       5. 由于京东活动一直变化可能会出现无法参加活动、报错等正常现象，可手动更新活动脚本                         | \033[0m"
     echo -e "\033[32m |                                                                                                                 | \033[0m"
-    echo -e "\033[32m |       6. 如果需要更新活动脚本，请执行 bash git_pull.sh 命令一键更新即可，它会同步更新 run-all.sh 脚本           | \033[0m"
+    echo -e "\033[32m |       6. 如果需要更新活动脚本，请执行 bash git_pull.sh 命令一键更新即可，它会同步更新 run_all.sh 脚本           | \033[0m"
     echo -e "\033[32m |                                                                                                                 | \033[0m"
     echo -e "\033[32m |       7. 除手动运行活动脚本外该项目还会通过定时的方式全天候自动运行活动脚本，具体运行记录可通过日志查看         | \033[0m"
     echo -e "\033[32m |                                                                                                                 | \033[0m"
