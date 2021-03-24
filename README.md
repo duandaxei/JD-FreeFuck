@@ -7,8 +7,8 @@ __如果您觉得这个项目不错的话可以在右上角给颗⭐吗？您的
 > `修复` 代表有错误已经修复完毕需要您执行相关命令解决相应的问题，如有特殊命令需要执行会在 Wiki 首页发布\
 > `通知` 代表有新的内容或信息需要您了解，请确保已仔细阅读所有通知内容
 
-- __2021/3/22 20:30 `更新`__
-ㅤ更新了控制面板，现在可以暂停动态背景了。请所有朋友执行 `git_pull` 一键更新脚本完成更新。
+- __2021/3/24 7:10 `更新`__
+ㅤ更新了控制面板，修复了滚动条可视性的问题，调整了部分UI布局。请所有朋友执行 `git_pull` 一键更新脚本完成更新。
 
 - __2021/3/22 10:00 `更新`__
 ㅤ重新塑造了控制面板，全面替换了UI，现在控制面板更好看了。请所有朋友执行 `git_pull` 一键更新脚本，然后根据对应版本《使用与更新》教程之<控制面板教程>中的第3条重启控制面板完成更新。如果遇到问题请及时向我反馈，如果您想成为开发者共同开发此项目请与我取得联系，感谢您的使用与支持。
@@ -141,9 +141,9 @@ __请ㅤㅤ认ㅤㅤ真ㅤㅤ阅ㅤㅤ读ㅤㅤ教ㅤㅤ程ㅤ，ㅤ90%ㅤㅤ的
 
        apt install -y curl 或 yum install -y curl
 2. 如果执行脚本部署命令后没有反应直接结束并跳回终端交互说明您的网络环境存在问题，请检查您的网络连通性。
-3. 如在拉取活动脚本时失败提示 `ssh: connect to host gitee.com port 22: Connection timed out` 是由于您使用平台的 `22` 端口不可用所导致，自行解决处理。
-4. 如在拉取活动脚本时失败提示 `Repository more than 5 connections` 是由于 `Gitee` 限制了每秒同时拉取项目的IP不能超过 `5` 个所导致，此报错为正常现象，重新执行更新命令即可。
-5. 如在拉取活动脚本时失败提示 `Could not resolve hostname gitee.com: Temporary failure in name resolution lost connection` 是由于无法解析到码云Gitee服务器地址所导致，说明您使用平台的网络环境异常，自行解决处理。
+3. 如在拉取活动脚本时失败提示 `Repository more than 5 connections` 是由于 `Gitee` 限制了每秒同时拉取项目的IP不能超过 `5` 个所导致，此报错为正常现象，重新执行更新命令即可。
+4. 如在拉取活动脚本时失败提示 `ssh: connect to host gitee.com port 22: Connection timed out` 是由于您使用平台的 `22` 端口不可用所导致，自行解决处理。
+5. 如在拉取活动脚本时失败提示 `Could not resolve hostname gitee.com: Temporary failure in name resolution lost connection` 是由于无法解析到 `Gitee` 服务器地址所导致，表明网络环境异常，自行解决处理。
 6. 部署成功后无法访问 `控制面板` 浏览器提示 `无法访问此网站，响应时间过长` 是由于 `5678` 端口外部不能访问所导致。
 7. 如果 `控制面板` 功能未安装成功可根据《使用与更新》教程之<控制面板教程>的第6条命令重新安装。
 ㅤ
@@ -212,9 +212,9 @@ __请ㅤㅤ认ㅤㅤ真ㅤㅤ阅ㅤㅤ读ㅤㅤ教ㅤㅤ程ㅤ，ㅤ90%ㅤㅤ的
 #### __更新项目文件与活动脚本：：__
     docker exec -it jd bash git_pull.sh
 #### __常见问题与帮助：__
-1. 如在拉取活动脚本时失败提示 `ssh: connect to host gitee.com port 22: Connection timed out` 是由于您使用平台的 `22` 端口不可用所导致，自行解决处理。
-2. 如在拉取活动脚本时失败提示 `Repository more than 5 connections` 是由于 `Gitee` 限制了每秒同时拉取项目的IP不能超过 `5` 个所导致，此报错为正常现象，重新执行更新命令即可。
-3. 如在拉取活动脚本时失败提示 `Could not resolve hostname gitee.com: Temporary failure in name resolution lost connection` 是由于无法解析到码云Gitee服务器地址所导致，说明您使用平台的网络环境异常，自行解决处理。
+1. 如在拉取活动脚本时失败提示 `Repository more than 5 connections` 是由于 `Gitee` 限制了每秒同时拉取项目的IP不能超过 `5` 个所导致，此报错为正常现象，重新执行更新命令即可。
+2. 如在拉取活动脚本时失败提示 `ssh: connect to host gitee.com port 22: Connection timed out` 是由于您使用平台的 `22` 端口不可用所导致，自行解决处理。
+3. 如在拉取活动脚本时失败提示 `Could not resolve hostname gitee.com: Temporary failure in name resolution lost connection` 是由于无法解析到 `Gitee` 服务器地址所导致，表明网络环境异常，自行解决处理。
 4. 部署成功后无法访问 `控制面板` 浏览器提示 `无法访问此网站，响应时间过长` 是由于容器映射的 `主机端口` （默认5678）外部不能访问所导致。
 5. 如果 `控制面板` 功能未安装成功可根据《使用与更新》教程之<控制面板教程>的第6条命令重新安装。
 
@@ -306,13 +306,13 @@ __请ㅤㅤ认ㅤㅤ真ㅤㅤ阅ㅤㅤ读ㅤㅤ教ㅤㅤ程ㅤ，ㅤ90%ㅤㅤ的
 ***
 
 ## 明天会更好
-<img src="./icon/thank.jpg" width="300" height="300" alt="微信赞赏码"/><br/>
-### 开发不易、维护艰辛，如果您愿意支持此项目，可对我打赏，感激不尽！
+<img src="./icon/thank.jpg" width="280" height="280" alt="微信赞赏码"/><br/>
+### 开发不易、维护艰辛，如果您愿意支持此项目，可向我捐助。
 
 ***
 
 ## Stargazers over time
-<img src="https://starchart.cc/SuperManito/JD-FreeFuck.svg" width="600" height="300" alt="Stargazers over time"/><br/>
+<img src="https://starchart.cc/SuperManito/JD-FreeFuck.svg" width="550" height="250" alt="Stargazers over time"/><br/>
 
 ***
 
