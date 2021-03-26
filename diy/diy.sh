@@ -24,7 +24,7 @@ scripts_base_url_4=https://gitee.com/SuperManito/scripts/raw/master/
 my_scripts_list_1="jd_jdaxc.js jd_xxl_gh.js"
 my_scripts_list_2="jd_factory_component.js"
 my_scripts_list_3="jd_paopao.js"
-my_scripts_list_4="jd_entertainment.js jd_shake.js jd_marketLottery.js jd_superDay.js jd_xmf.js jd_wish.js jd_lenovo.js jd_oneplus.js jd_mgold.js jd_grassy.js jd_sister.js"
+my_scripts_list_4="jd_shake.js jd_marketLottery.js jd_superDay.js jd_xmf.js jd_wish.js jd_lenovo.js jd_oneplus.js jd_mgold.js jd_grassy.js jd_sister.js"
 
 ## 活动脚本名称1：东东爱消除、个护爱消除
 ## 活动脚本名称2：京喜工厂Plus
@@ -86,3 +86,4 @@ rm -rf ${ScriptsDir}/jd_shakeBean.js
 rm -rf ${ScriptsDir}/jd_super5G.js
 rm -rf ${ScriptsDir}/jd_mother_jump.js
 rm -rf ${ScriptsDir}/jd_city_cash.js
+rm -rf ${ScriptsDir}/jd_entertainment.js
